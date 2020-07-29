@@ -13,7 +13,7 @@ import Personagem from './Personagem';
 import Planetas from './Planetas';
 import Planeta from './Planeta';
 
-import './index.css';
+import './css/index.css';
 
 ReactDOM.render(
     <BrowserRouter>

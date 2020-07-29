@@ -7,6 +7,8 @@ import Main from './Main';
 import Personagem from './Personagem';
 import Planeta from './Planeta';
 
+import './css/Filme.css';
+
 class Filme extends React.Component{
     constructor(props){
         super(props)
@@ -50,26 +52,27 @@ class Filme extends React.Component{
     }
 
     render(){
-        let dadosFilme, dadosPersonagens, dadosPlanetas;
+        let dadosFilme, dadosAbertura, dadosPersonagens, dadosPlanetas;
         
         if(this.state.filme){
             dadosFilme = (
-                <div>
+                <div className="div-filme">
                     <div>
-                        <div>
-                            <h3>{'Episódio ' + this.state.filme.episode_id + ' - ' + this.state.filme.title}</h3>
-                        </div>
-                        <div>
-                            <h4>Lançamento: {new Date(this.state.filme.release_date).getFullYear()}</h4>
-                        </div>
+                        <h3 className="page-header">Episódio {this.state.filme.episode_id + ' - ' + this.state.filme.title}</h3>
                     </div>
                     <div>
-                        <div>
-                            <h4>Abertura:</h4>
-                        </div>
-                        <div>
-                            <pre>{this.state.filme.opening_crawl}</pre>
-                        </div>
+                        <h4>Lançamento: {new Date(this.state.filme.release_date).getFullYear()}</h4>
+                    </div>
+                </div>
+            )
+
+            dadosAbertura = (
+                <div className="div-filme">
+                    <div>
+                        <h4>Abertura</h4>
+                    </div>
+                    <div>
+                        <pre>{this.state.filme.opening_crawl}</pre>
                     </div>
                 </div>
             )
@@ -77,7 +80,7 @@ class Filme extends React.Component{
 
         if(this.state.personagens.length > 0){
             dadosPersonagens = (
-                <div>
+                <div className="div-filme">
                     <div>
                         <h4>Personagens</h4>
                     </div>
@@ -97,7 +100,7 @@ class Filme extends React.Component{
                                         <tr>
                                             <td><Link to={'/personagens/' + id} render={<Personagem/>}>{personagem.name}</Link></td>
                                             <td>{personagem.gender}</td>
-                                            <td>{personagem.birth_year}</td>
+                                            <td className="td-numero">{personagem.birth_year}</td>
                                         </tr>
                                     )
                                 })}
@@ -110,7 +113,7 @@ class Filme extends React.Component{
 
         if(this.state.planetas.length > 0){
             dadosPlanetas = (
-                <div>
+                <div className="div-filme">
                     <div>
                         <h4>Planetas</h4>
                     </div>
@@ -119,8 +122,8 @@ class Filme extends React.Component{
                             <thead>
                                 <tr>
                                     <th>Nome</th>
-                                    <th>Período de rotação</th>
-                                    <th>Período de órbita</th>
+                                    <th>Rotação</th>
+                                    <th>Órbita</th>
                                     <th>Diâmetro</th>
                                     <th>Clima</th>
                                     <th>População</th>
@@ -132,11 +135,11 @@ class Filme extends React.Component{
                                     return(
                                         <tr>
                                             <td><Link to={'/planetas/' + id} render={<Planeta/>}>{planeta.name}</Link></td>
-                                            <td>{planeta.rotation_period}</td>
-                                            <td>{planeta.orbital_period}</td>
-                                            <td>{planeta.diameter}</td>
+                                            <td className="td-numero">{planeta.rotation_period}</td>
+                                            <td className="td-numero">{planeta.orbital_period}</td>
+                                            <td className="td-numero">{planeta.diameter}</td>
                                             <td>{planeta.climate}</td>
-                                            <td>{planeta.population}</td>
+                                            <td className="td-numero">{planeta.population}</td>
                                         </tr>
                                     )
                                 })}
@@ -148,11 +151,12 @@ class Filme extends React.Component{
         }
 
         let content = (
-            <div>
+            <div className="div-filme">
                 <div>
                     {dadosFilme}
                 </div>
-                <div>
+                <div className="div-extras-filme">
+                    {dadosAbertura}
                     {dadosPersonagens}
                     {dadosPlanetas}
                 </div>

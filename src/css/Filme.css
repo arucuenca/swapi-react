@@ -1,0 +1,21 @@
+.div-filme{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+@media (min-width: 600px){
+    .div-extras-filme{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}
+
+@media (max-width: 599px){
+    .div-extras-filme{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+}

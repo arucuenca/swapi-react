@@ -56,21 +56,13 @@ class Planeta extends React.Component{
             dadosPlaneta = (
                 <div>
                     <div>
-                        <h3>{'Planeta ' + this.state.planeta.name}</h3>
+                        <h3 className="page-header">{this.state.planeta.name}</h3>
                     </div>
                     <div>
                         <h4>População: {this.state.planeta.population}</h4>
-                    </div>
-                    <div>
                         <h4>Clima: {this.state.planeta.climate}</h4>
-                    </div>
-                    <div>
                         <h4>Período de rotação: {this.state.planeta.rotation_period}</h4>
-                    </div>
-                    <div>
                         <h4>Período de órbita: {this.state.planeta.orbital_period}</h4>
-                    </div>
-                    <div>
                         <h4>Diâmetro: {this.state.planeta.diameter}</h4>
                     </div>
                 </div>
@@ -98,8 +90,8 @@ class Planeta extends React.Component{
                                     return(
                                         <tr>
                                             <td><Link to={'/filmes/' + id} render={<Filme/>}>{filme.title}</Link></td>
-                                            <td>{filme.episode_id}</td>
-                                            <td>{new Date(filme.release_date).getFullYear()}</td>
+                                            <td className="td-numero">{filme.episode_id}</td>
+                                            <td className="td-numero">{new Date(filme.release_date).getFullYear()}</td>
                                         </tr>
                                     )
                                 })}
@@ -132,7 +124,7 @@ class Planeta extends React.Component{
                                         <tr>
                                             <td><Link to={'/personagens/' + id} render={<Personagem/>}>{residente.name}</Link></td>
                                             <td>{residente.gender}</td>
-                                            <td>{residente.birth_year}</td>
+                                            <td className="td-numero">{residente.birth_year}</td>
                                         </tr>
                                     )
                                 })}

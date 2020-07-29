@@ -1,0 +1,102 @@
+.div-rotas{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.div-rota:hover{
+    background-color: lightgray;
+    color: black;
+}
+
+.div-content{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.div-input{
+    display: flex;
+}
+
+.lista-itens{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.lista-item>a:hover{
+    background-color: lightgray;
+    color: black;
+    border-radius: 3px;
+}
+
+.div-paginador{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.code-paginas{
+    padding-top: 5px;
+    margin: 0px 5px;
+}
+
+@media (min-width: 600px){
+    .div-nav{
+        height: 3rem;
+    }
+
+    .div-pesquisa{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 40%;
+    }
+
+    .div-lista{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 40%;
+    }
+
+    .lista-item>a{
+        height: 35px;
+        padding-top: 5px;
+    }
+}
+
+@media (max-width: 599px){
+    .div-nav{
+        height: 10rem;
+    }
+
+    .div-pan{
+        overflow-x: scroll;
+    }
+
+    .div-input{
+        justify-content: center;
+    }
+
+    .div-pesquisa{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .div-lista{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .lista-item>a{
+        height: 23px;
+        padding-top: 5px;
+    }
+}

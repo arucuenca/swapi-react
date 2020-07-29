@@ -44,12 +44,10 @@ class Personagem extends React.Component{
             dadosPersonagem = (
                 <div>
                     <div>
-                        <h3>{'Nome: ' + this.state.personagem.name}</h3>
+                        <h3 className="page-header">{this.state.personagem.name}</h3>
                     </div>
                     <div>
                         <h4>Nascimento: {this.state.personagem.birth_year}</h4>
-                    </div>
-                    <div>
                         <h4>Gênero: {this.state.personagem.gender}</h4>
                     </div>
                 </div>
@@ -77,8 +75,8 @@ class Personagem extends React.Component{
                                     return(
                                         <tr>
                                             <td><Link to={'/filmes/' + id} render={<Filme/>}>{filme.title}</Link></td>
-                                            <td>{filme.episode_id}</td>
-                                            <td>{new Date(filme.release_date).getFullYear()}</td>
+                                            <td className="td-numero">{filme.episode_id}</td>
+                                            <td className="td-numero">{new Date(filme.release_date).getFullYear()}</td>
                                         </tr>
                                     )
                                 })}
@@ -91,12 +89,8 @@ class Personagem extends React.Component{
 
         let content = (
             <div>
-                <div>
-                    {dadosPersonagem}
-                </div>
-                <div>
-                    {dadosFilmes}
-                </div>
+                {dadosPersonagem}
+                {dadosFilmes}
             </div>
         )
 

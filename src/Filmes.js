@@ -51,31 +51,44 @@ class Filmes extends React.Component{
         let content, pesquisa, tabela;
 
         if(this.state.filmes.length > 0){
-            tabela = this.state.filmes.map((filme) => {
-                let id = filme.url.split('/')[5]
-                return (
-                    <li>
-                        <Link to={'/filmes/' + id} render={<Filme />}>
-                            Episódio {filme.episode_id} - {filme.title} ({new Date(filme.release_date).getFullYear()})
-                        </Link>
-                    </li>
-                )
-            })
+            tabela =(
+                <div className="div-lista">
+                    <div>
+                        <h4 className="page-header">Lista de filmes</h4>
+                    </div>
+                    <div className="lista-itens">
+                        {this.state.filmes.map((filme) => {
+                            let id = filme.url.split('/')[5]
+                            return (
+                                <div key={'div_' + filme.url} className="lista-item">
+                                    <Link key={'link_' + filme.url} to={'/filmes/' + id} render={<Filme />}>
+                                        Episódio {filme.episode_id} - {filme.title} ({new Date(filme.release_date).getFullYear()})
+                                    </Link>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
+            ) 
         }else{
             tabela = (
-                <div>
+                <div className="div-lista">
+                    <div>
+                        <h4 className="page-header">Lista de filmes</h4>
+                    </div>
                     <h4>Nenhum resultado encontrado!</h4>
                 </div>
             )
         }
 
         pesquisa = (
-            <div>
+            <div className="div-pesquisa">
                 <div>
-                    <h4>Pesquisar filmes</h4>
+                    <h4 className="page-header">Pesquisar filmes</h4>
                 </div>
-                <div>
-                    <input type="text" placeholder="Digite o título" value={this.state.pesquisa} onChange={this.handlePesquisaValue}/>
+                <div className="div-input">
+                    <input type="text" placeholder="Digite o título"
+                           value={this.state.pesquisa} onChange={this.handlePesquisaValue}/>
                     <button onClick={this.handlePesquisar}>Pesquisar</button>
                 </div>
             </div>
@@ -83,10 +96,10 @@ class Filmes extends React.Component{
         
         content = (
             <div>
-                {pesquisa}
-                <ul>
+                <div className="div-content">
+                    {pesquisa}
                     {tabela}
-                </ul>
+                </div>
             </div>
         );
 

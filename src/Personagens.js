@@ -95,32 +95,16 @@ class Personagens extends React.Component{
         let nextButtn, prevButtn, paginador, lista, content, pesquisa;
 
         pesquisa = (
-            <div>
+            <div className="div-pesquisa">
                 <div>
-                    <h4>Pesquisar personagens</h4>
+                    <h4 className="page-header">Pesquisar personagens</h4>
                 </div>
-                <div>
+                <div className="div-input">
                     <input type="text" placeholder="Digite o nome" value={this.state.pesquisa} onChange={this.handlePesquisaValue}/>
                     <button onClick={this.handlePesquisar}>Pesquisar</button>
                 </div>
             </div>
         )
-
-        if(this.state.personagens.length > 0){
-            lista = this.state.personagens.map((personagem) => {
-                return (
-                    <li id={personagem.url}>
-                        <Link to={'/personagens/' + personagem.url.split('/')[5]} render={<Personagem />}>{personagem.name}</Link>
-                    </li>
-                )
-            })
-        }else{
-            lista = (
-                <div>
-                    <h4>Nenhum resultado encontrado!</h4>
-                </div>
-            )
-        }
 
         if(this.state.next){
             nextButtn = <div><button onClick={this.handleNextPage}>Próxima</button></div>;
@@ -131,23 +115,48 @@ class Personagens extends React.Component{
         }
 
         if(this.state.personagens.length > 0){
-            paginador = <code>{this.state.pagina + '/' + this.state.totalPaginas}</code>
+            paginador = <code className="code-paginas">{'Página ' + this.state.pagina + ' de ' + this.state.totalPaginas}</code>
+        }
+
+        if(this.state.personagens.length > 0){
+            lista = (
+                <div className="div-lista">
+                    <div>
+                        <h4 className="page-header">Lista de personagens</h4>
+                    </div>
+                    <div className="lista-itens">
+                        {this.state.personagens.map((personagem) => {
+                            return (
+                                <div key={'div_' + personagem.url} className="lista-item">
+                                    <Link key={'link_' + personagem.url} to={'/personagens/' + personagem.url.split('/')[5]} render={<Personagem />}>
+                                        {personagem.name}
+                                    </Link>
+                                </div>
+                            )
+                        })}
+                    </div>
+                    <div className="div-paginador">
+                        {this.state.prev ? prevButtn : null}
+                        {this.state.personagens.length > 0 ? paginador : null}
+                        {this.state.next ? nextButtn : null}
+                    </div>
+                </div>
+            )
+        }else{
+            lista = (
+                <div className="div-lista">
+                    <div>
+                        <h4 className="page-header">Lista de personagens</h4>
+                    </div>
+                    <h4>Nenhum resultado encontrado!</h4>
+                </div>
+            )
         }
 
         content = (
-            <div>
-                <div>
-                    {pesquisa}
-                </div>
-                <div>
-                    <ul>
-                        {lista}
-                    </ul>
-
-                    {this.state.prev ? prevButtn : null}
-                    {this.state.personagens.length > 0 ? paginador : null}
-                    {this.state.next ? nextButtn : null}
-                </div>
+            <div className="div-content">
+                {pesquisa}
+                {lista}
             </div>
         );
 

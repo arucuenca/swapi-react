@@ -1,0 +1,41 @@
+nav{
+    height: inherit;
+}
+
+.rotas{
+    display: flex;
+    height: inherit;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background-color: yellow;
+}
+
+.item-rotas:hover{
+    background-color: gold;
+}
+
+.item-rotas>a{
+    color: black;
+    padding: 8px;
+    font-weight: 600;
+}
+
+@media (min-width: 600px){    
+    .item-rotas{
+        width: 20%;
+        text-align: center;
+    }
+    
+    .item-rotas:hover{
+        border-radius: 3px;
+    }
+}
+
+@media (max-width: 599px){
+    .item-rotas{
+        width: 100%;
+        border-bottom: 1px solid black;
+        text-align: center;
+    }
+}
